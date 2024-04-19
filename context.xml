@@ -20,10 +20,12 @@
 
     <!-- Default set of monitored resources. If one of these changes, the    --> 
     <!-- web application will be reloaded.                                   --> 
-<Resource  name="database-10" auth="Container" type="javax.sql.DataSource"
-           maxTotal="500" maxIdle="30" maxWaitMillis="1000"
-           username="admin" password="Admin123" driverClassName="com.mysql.jdbc.Driver"
-           url="jdbc:mysql://database-10.c1kqmygwe75r.ap-south-1.rds.amazonaws.com:3306/studentapp?useUnicode=yes&amp;characterEncoding=utf8"/>
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+    <Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
+    maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+    username="admin" password="Admin123" driverClassName="com.mysql.jdbc.Driver"
+    url="database-10.c1kqmygwe75r.ap-south-1.rds.amazonaws.com:3306/studentapp"/>
     
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
     <!--
